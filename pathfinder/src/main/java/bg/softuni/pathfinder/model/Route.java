@@ -27,8 +27,8 @@ public class Route extends BaseEntity {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @OneToOne()
-    private Picture header;
+    @OneToMany
+    private Set<Picture> pictures;
 
     @OneToMany(mappedBy = "route")
     private Set<Comment> comments;
@@ -96,12 +96,12 @@ public class Route extends BaseEntity {
         this.comments = comments;
     }
 
-    public Picture getHeader() {
-        return header;
+    public Set<Picture> getPictures() {
+        return pictures;
     }
 
-    public void setHeader(Picture header) {
-        this.header = header;
+    public void setPictures(Set<Picture> pictures) {
+        this.pictures = pictures;
     }
 
     public Set<Category> getCategories() {
