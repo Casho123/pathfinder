@@ -9,9 +9,6 @@ import javax.persistence.*;
 public class Category extends BaseEntity {
 
 
-    @Column(nullable = false, unique = true)
-    private String name;
-
     @Enumerated(EnumType.STRING)
     private RouteCategory category;
 
@@ -21,13 +18,6 @@ public class Category extends BaseEntity {
     public Category() {
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public RouteCategory getCategory() {
         return category;
