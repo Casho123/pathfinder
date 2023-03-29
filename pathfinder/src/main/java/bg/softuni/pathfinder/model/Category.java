@@ -10,7 +10,7 @@ public class Category extends BaseEntity {
 
 
     @Enumerated(EnumType.STRING)
-    private RouteCategory category;
+    private RouteCategory name;
 
     @Column(columnDefinition = "TEXT")
     private String description;
@@ -19,12 +19,12 @@ public class Category extends BaseEntity {
     }
 
 
-    public RouteCategory getCategory() {
-        return category;
+    public RouteCategory getName() {
+        return name;
     }
 
-    public void setCategory(RouteCategory category) {
-        this.category = category;
+    public void setName(RouteCategory name) {
+        this.name = name;
     }
 
     public String getDescription() {
