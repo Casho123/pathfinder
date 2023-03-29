@@ -4,22 +4,29 @@ import bg.softuni.pathfinder.model.enums.UserLevel;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false)
     private String password;
+    @Column(name = "fullname")
+    private String fullName;
 
-    @Column(nullable = false)
+    @Column
+    private int age;
+
+    @Column(nullable = false, unique = true)
     private String email;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @Column(unique = true)
     private Set<Role> roles;
 
     @Enumerated(EnumType.STRING)
@@ -45,6 +52,22 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -67,5 +90,18 @@ public class User extends BaseEntity {
 
     public void setLevel(UserLevel level) {
         this.level = level;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return username.equals(user.username);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username);
     }
 }
