@@ -32,9 +32,12 @@ public class Route extends BaseEntity {
 
     @OneToMany(mappedBy = "route")
     private Set<Comment> comments;
+    @ManyToMany
+    private Set<Category> categories;
 
     public Route() {
         this.comments = new HashSet<>();
+        this.categories = new HashSet<>();
     }
 
     public String getGpxCoordinates() {
@@ -99,5 +102,13 @@ public class Route extends BaseEntity {
 
     public void setHeader(Picture header) {
         this.header = header;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 }
