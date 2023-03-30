@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 @Controller
 public class HomeController {
 
@@ -16,12 +18,12 @@ public class HomeController {
     }
 
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public String home(Model model) {
 
-        Route route = this.routeService.getMostCommentedRoute();
+        List<Route> routes = this.routeService.getMostCommentedRoute();
 
-        model.addAttribute("mostCommentedRoute", route);
+        model.addAttribute("mostCommentedRoute", routes.get(0));
 
         return "index";
 

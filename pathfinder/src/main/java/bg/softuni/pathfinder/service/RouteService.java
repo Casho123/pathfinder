@@ -17,8 +17,8 @@ public class RouteService {
     }
 
 
-    public Route getMostCommentedRoute() {
-        List<Route> routes = this.routeRepository.findMostCommentedRoute();
-        return routes.get(0);
+    public List<Route> getMostCommentedRoute() {
+       return this.routeRepository.findMostCommented();
+
     }
 }

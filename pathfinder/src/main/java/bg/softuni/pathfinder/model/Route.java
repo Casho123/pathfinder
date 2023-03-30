@@ -27,7 +27,7 @@ public class Route extends BaseEntity {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private Set<Picture> pictures;
 
     @OneToMany(mappedBy = "route")
