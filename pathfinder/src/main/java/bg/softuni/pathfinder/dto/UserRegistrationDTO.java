@@ -1,13 +1,27 @@
 package bg.softuni.pathfinder.dto;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+
 public class UserRegistrationDTO {
 
-
+    @NotEmpty
+    @Size(min = 5, max = 20)
     private String username;
+    @NotEmpty
+    @Size(min = 5, max = 20)
     private String fullName;
+    @NotEmpty
+    @Size(min = 5, max = 20)
     private String email;
+    @Positive
     private int age;
+    @NotEmpty
+    @Size(min = 5, max = 20)
     private String password;
+    @NotEmpty
+    @Size(min = 5, max = 20)
     private String confirmPassword;
 
     public UserRegistrationDTO() {

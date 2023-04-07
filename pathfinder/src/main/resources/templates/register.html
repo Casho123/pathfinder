@@ -14,15 +14,14 @@
             <form
                     th:href="@{/register}"
                     th:method="POST"
-                    th:object="userRegistrationDTO">
+                    th:object="${userRegistrationDTO}">
                 <div>
                     <div class="col-auto">
                         <label for="inputUsername" class="col-form-label ">Username</label>
                     </div>
                     <div class="col-auto">
                         <input name="username"
-                               
-                               required minlength="5" maxlength="20"
+                               th:field="*{username}"
                                type="text"
                                id="inputUsername"
                                class="form-control"
@@ -41,8 +40,8 @@
                         <label for="inputFullName" class="col-form-label ">Full Name</label>
                     </div>
                     <div class="col-auto">
-                        <input name="fullname"
-                               required minlength="5" maxlength="20"
+                        <input name="fullName"
+                               th:field="*{fullName}"
                                type="text"
                                id="inputFullName"
                                class="form-control"
@@ -58,7 +57,8 @@
                     </div>
                     <div class="col-auto">
                         <input name="email"
-								required
+                               th:field="*{email}"
+                               required
                                type="email"
                                id="inputEmail"
                                class="form-control"
@@ -72,7 +72,9 @@
                         <label for="inputAge" class="col-form-label ">Age</label>
                     </div>
                     <div class="col-auto">
-                        <input name="age" required
+                        <input name="age"
+                               th:field="*{age}"
+                               required
                                type="number"
                                id="inputAge"
                                class="form-control"
@@ -88,7 +90,8 @@
                     </div>
                     <div class="col-auto">
                         <input name="password"
-                                required minlength="5" maxlength="20"
+                                required
+                               th:field="*{password}"
                                type="password"
                                id="inputPassword"
                                class="form-control"
@@ -106,7 +109,8 @@
                     </div>
                     <div class="col-auto">
                         <input name="confirmPassword"
-                                required minlength="5" maxlength="20"
+                               required
+                               th:field="*{confirmPassword}"
                                type="password"
                                id="inputConfirmPassword"
                                class="form-control"
