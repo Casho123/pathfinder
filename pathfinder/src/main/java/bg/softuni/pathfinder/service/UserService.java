@@ -24,7 +24,7 @@ public class UserService {
 
         Optional<User> byEmail = this.userRepository.findByEmail(userRegistrationDTO.getEmail());
 
-        if (byEmail.isEmpty()) {
+        if (byEmail.isPresent()) {
             return;
         }
 
