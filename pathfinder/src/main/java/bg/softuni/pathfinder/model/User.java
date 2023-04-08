@@ -36,6 +36,15 @@ public class User extends BaseEntity {
         this.roles = new HashSet<>();
     }
 
+    public User(String username, String password, String fullName, int age, String email) {
+        this.username = username;
+        this.password = password;
+        this.fullName = fullName;
+        this.age = age;
+        this.email = email;
+        this.roles = new HashSet<>();
+    }
+
     public String getUsername() {
         return username;
     }
