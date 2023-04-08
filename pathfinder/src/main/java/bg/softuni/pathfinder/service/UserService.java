@@ -28,6 +28,14 @@ public class UserService {
             return;
         }
 
-        User user = new User();
+        User user = new User(
+                userRegistrationDTO.getUsername(),
+                userRegistrationDTO.getPassword(),
+                userRegistrationDTO.getFullName(),
+                userRegistrationDTO.getAge(),
+                userRegistrationDTO.getEmail()
+        );
+
+        this.userRepository.save(user);
     }
 }
