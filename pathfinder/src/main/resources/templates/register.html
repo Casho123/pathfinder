@@ -22,6 +22,7 @@
                     <div class="col-auto">
                         <input name="username"
                                th:field="*{username}"
+                               th:errorclass="is-invalid"
                                type="text"
                                id="inputUsername"
                                class="form-control"
@@ -42,6 +43,7 @@
                     <div class="col-auto">
                         <input name="fullName"
                                th:field="*{fullName}"
+                               th:errorclass="is-invalid"
                                type="text"
                                id="inputFullName"
                                class="form-control"
@@ -58,6 +60,7 @@
                     <div class="col-auto">
                         <input name="email"
                                th:field="*{email}"
+                               th:errorclass="is-invalid"
                                required
                                type="email"
                                id="inputEmail"
