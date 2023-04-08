@@ -2,9 +2,11 @@ package bg.softuni.pathfinder.web;
 
 import bg.softuni.pathfinder.dto.UserRegistrationDTO;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -22,7 +24,20 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String register(@Valid UserRegistrationDTO userRegistrationDTO) {
+    public String register(@Valid UserRegistrationDTO userRegistrationDTO, BindingResult bindingResult,
+                           RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+
+            redirectAttributes.addFlashAttribute("userRegistrationDTO", userRegistrationDTO);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userRegistrationDTO", bindingResult);
+
+
+
+
+            return "redirect:/register";
+        }
+
 
 
 
