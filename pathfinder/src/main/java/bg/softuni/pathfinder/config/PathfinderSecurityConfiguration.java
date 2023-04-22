@@ -18,14 +18,14 @@ public class PathfinderSecurityConfiguration {
         http
                 .authorizeRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .antMatchers("/", "/users/login", "/users/register").permitAll()
+                .antMatchers("/", "/login", "/register").permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/users/login")
+                .loginPage("/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/")
-                .failureForwardUrl("/users/login?error=true");
+                .failureForwardUrl("/login?error=true");
 
         return http.build();
 
