@@ -9,7 +9,7 @@
             <a href="/">Profile</a>
         </li>
         <li>
-            <a href="/">Admin</a>
+            <a sec:authorize="hasRole('ADMIN')" href="/">Admin</a>
         </li>
         <li>
             <form th:action="@{/logout}" th:method="post">
