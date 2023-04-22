@@ -43,7 +43,15 @@ public class PathfinderSecurityConfiguration {
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/")
-                .failureForwardUrl("/login?error=true");
+                .failureForwardUrl("/login?error=true")
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .clearAuthentication(true)
+                .deleteCookies("JSESSIONID")
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true);
+
 
         http.csrf().disable();
 
@@ -51,7 +59,7 @@ public class PathfinderSecurityConfiguration {
 
     }
     @Bean
-    public UserDetailsService userDetailsService(UserRepository userRepository) {
+    public UserDetailsService userDetailsService() {
         return new PathfinderUserDetailsService(this.userRepository);
     }
 }
