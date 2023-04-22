@@ -45,6 +45,8 @@ public class PathfinderSecurityConfiguration {
                 .defaultSuccessUrl("/")
                 .failureForwardUrl("/login?error=true");
 
+        http.csrf().disable();
+
         return http.build();
 
     }
