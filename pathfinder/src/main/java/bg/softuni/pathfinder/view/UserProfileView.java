@@ -13,12 +13,12 @@ public class UserProfileView {
 
     private String email;
 
-    private UserLevel level;
+    private String level;
 
     public UserProfileView() {
     }
 
-    public UserProfileView(String username, String fullName, int age, String email, UserLevel level) {
+    public UserProfileView(String username, String fullName, int age, String email, String level) {
         this.username = username;
         this.fullName = fullName;
         this.age = age;
@@ -58,11 +58,11 @@ public class UserProfileView {
         this.email = email;
     }
 
-    public UserLevel getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(UserLevel level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 }

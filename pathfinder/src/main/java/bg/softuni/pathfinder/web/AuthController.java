@@ -66,8 +66,10 @@ public class AuthController {
                 user.getFullName(),
                 user.getAge(),
                 user.getEmail(),
-                user.getLevel()
+                user.getLevel() != null ? user.getLevel().name() : "BEGINNER"
         );
+        model.addAttribute("user", userProfileView);
+
         return "profile";
     }
 }
