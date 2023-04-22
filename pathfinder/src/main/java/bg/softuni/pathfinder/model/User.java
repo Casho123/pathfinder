@@ -101,6 +101,7 @@ public class User extends BaseEntity {
         this.level = level;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

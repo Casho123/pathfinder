@@ -3,6 +3,7 @@ package bg.softuni.pathfinder.service;
 import bg.softuni.pathfinder.dto.UserRegistrationDTO;
 import bg.softuni.pathfinder.model.User;
 import bg.softuni.pathfinder.repository.UserRepository;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -41,5 +42,10 @@ public class UserService {
         );
 
         this.userRepository.save(user);
+    }
+
+    public User getUser(String username) {
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException(username + " was not found!"));
     }
 }

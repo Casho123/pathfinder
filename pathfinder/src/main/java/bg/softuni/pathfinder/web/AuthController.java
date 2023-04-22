@@ -1,8 +1,11 @@
 package bg.softuni.pathfinder.web;
 
 import bg.softuni.pathfinder.dto.UserRegistrationDTO;
+import bg.softuni.pathfinder.model.User;
 import bg.softuni.pathfinder.service.UserService;
+import bg.softuni.pathfinder.view.UserProfileView;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 public class AuthController {
@@ -51,5 +55,19 @@ public class AuthController {
     @GetMapping("/login")
     public String login() {
         return "login";
+    }
+
+    @GetMapping("/profile")
+    public String profile(Principal principal, Model model) {
+        String username = principal.getName();
+        User user = this.userService.getUser(username);
+        UserProfileView userProfileView = new UserProfileView(
+                username,
+                user.getFullName(),
+                user.getAge(),
+                user.getEmail(),
+                user.getLevel()
+        );
+        return "profile";
     }
 }
